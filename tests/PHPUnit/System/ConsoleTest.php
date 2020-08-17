@@ -209,10 +209,10 @@ END;
                 ->constructor('piwik', \DI\get('log.handlers'), \DI\get('log.processors')),
 
             'observers.global' => \DI\add([
-                ['Console.filterCommands', function (&$commands) {
+                ['Console.filterCommands', \DI\value(function (&$commands) {
                     $commands[] = TestCommandWithFatalError::class;
                     $commands[] = TestCommandWithException::class;
-                }],
+                })],
 
                 ['Request.dispatch', function ($module, $action) {
                     if ($module === 'CorePluginsAdmin' && $action === 'safemode') {

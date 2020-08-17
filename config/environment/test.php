@@ -98,19 +98,19 @@ return array(
 
     'observers.global' => DI\add(array(
 
-        array('AssetManager.getStylesheetFiles', function (&$stylesheets) {
+        array('AssetManager.getStylesheetFiles', DI\value(function (&$stylesheets) {
             $useOverrideCss = \Piwik\Container\StaticContainer::get('test.vars.useOverrideCss');
             if ($useOverrideCss) {
                 $stylesheets[] = 'tests/resources/screenshot-override/override.css';
             }
-        }),
+        })),
 
-        array('AssetManager.getJavaScriptFiles', function (&$jsFiles) {
+        array('AssetManager.getJavaScriptFiles', DI\value(function (&$jsFiles) {
             $useOverrideJs = \Piwik\Container\StaticContainer::get('test.vars.useOverrideJs');
             if ($useOverrideJs) {
                 $jsFiles[] = 'tests/resources/screenshot-override/override.js';
             }
-        }),
+        })),
 
         array('Updater.checkForUpdates', function () {
             try {
