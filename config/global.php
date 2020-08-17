@@ -77,7 +77,7 @@ return array(
     'Piwik\Translation\Loader\LoaderInterface' => DI\autowire('Piwik\Translation\Loader\LoaderCache')
         ->constructorParameter('loader', DI\get('Piwik\Translation\Loader\JsonFileLoader')),
 
-    'DeviceDetector\Cache\Cache' => DI\object('Piwik\DeviceDetector\DeviceDetectorCache')->constructor(86400),
+    'DeviceDetector\Cache\Cache' => DI\autowire('Piwik\DeviceDetector\DeviceDetectorCache')->constructor(86400),
 
     'observers.global' => array(),
 
